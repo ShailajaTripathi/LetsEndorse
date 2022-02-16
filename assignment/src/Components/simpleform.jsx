@@ -1,6 +1,6 @@
 import React, {useState}from "react";
 
-function Form() {
+function simpleform() {
 
   const [business_stage,setBusiness_stage] = useState("");
   const [age_of_establishment,setAge_of_establishment] = useState(0);
@@ -282,7 +282,7 @@ function displaySuppliers(e){
             <option value="processing">Processing</option>
             <option value="unit">Unit</option>
             <option value="shop">Shop</option>
-            <option value="">Vending Cart</option>
+            <option value="vendering_cart">Vending Cart</option>
             <option value="manufacturing_unit">Manufacturing Unit</option>
           </select>{" "}
           <br />
@@ -591,4 +591,4 @@ function displaySuppliers(e){
   );
 }
 
-export default Form;
+export default simpleform;
