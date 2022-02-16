@@ -1,19 +1,110 @@
-import React from "react";
+import React, {useState}from "react";
+import "./form.css";
+
 import {
   Form,
   Button,
   Checkbox,
-  DatePicker,
   Input,
   Select,
-  Space,
   InputNumber,
 } from "antd";
-import "./form.css";
+
 
 function Introduction() {
+
+  const [name, setName]= useState("")
+  const [business_stage,setBusiness_stage] = useState("");
+  const [age_of_establishment,setAge_of_establishment] = useState(0);
+  const [primary_product_service_offered,setPrimary_product_service_offered] = useState("")
+  const [offered_to,setOffered_to] = useState("")
+  const [secondary_product_service_offered,setSecondary_product_service_offered] = useState("")
+  const [processed_products,setProcessed_products] = useState("")
+  const [relevant_experience,setRelevant_experience] = useState(0)
+  const [skill_training,setSkill_training] = useState("")
+  const [usp,setUsp] = useState([]) //
+  const [establishment_type,setEstablishment_type] = useState("")
+  const [business_area,setBusiness_area] = useState("")
+  const [business_locality,setBusiness_locality] = useState("")
+  const [infra_ownership,setInfra_ownership] = useState("")
+  const [establishment_area,setEstablishment_area] = useState(0)
+  const [market_research,setMarket_research] = useState("")
+  const [primary_market,setPrimary_market] = useState("")
+  const [customers,setCustomers] = useState("")
+  const [seasonality,setSeasonality] = useState("")
+  const [competition,setCompetition] = useState("")
+  const [suppliers,setSuppliers] = useState("")
+
+
+  function displayName(e){
+    setName(e.target.value);
+  }
+  function displayBusinessStage(e){
+    setBusiness_stage(e.target.value);
+  }
+  function displayAgeOfEstablishment (e){
+      setAge_of_establishment(e.target.value);
+    }
+  
+  function displayPrimaryProducts(e){
+    setPrimary_product_service_offered(e.target.value);
+  }
+  function displayOffered_to(e){
+    setOffered_to(e.target.value)
+  }
+  function displaySecondary_product_service_offered(e){
+    setSecondary_product_service_offered(e.target.value);
+  }
+  function displayProcessed_products(e){
+    setProcessed_products(e.target.value)
+  }
+  function displayRelevant_experience(e){
+    setRelevant_experience(e.target.value);
+  }
+  function displaySkill_training(e){
+    setSkill_training(e.target.value);
+  }
+ function displayEstablishment_type(e){
+  setEstablishment_type(e.target.value);
+ }
+function displayBusiness_area(e){
+  setBusiness_area(e.target.value);
+}
+function displayBusiness_locality(e){
+  setBusiness_locality(e.target.value)
+}
+function displayInfra_ownership(e){
+  setInfra_ownership(e.target.value)
+}
+function displayEstablishment_area(e){
+  setEstablishment_area(e.target.value);
+}
+function displayMarket_research(e){
+  setMarket_research(e.target.value);
+}
+function displayPrimary_market(e){
+  setPrimary_market(e.target.value);
+}
+function displayCustomers(e){
+  setCustomers(e.target.value);
+}
+function displaySeasonality(e){
+  setSeasonality(e.target.value);
+}
+function displayCompetition(e){
+  setCompetition(e.target.value);
+}
+function displaySuppliers(e){
+  setSuppliers(e.target.value);
+}
+function displaySentence (e) {
+  var updatedName = e.target.value;
+  this.setState({name: updatedName}); 
+}
   return (
     <div className="intro">
+    
+      <div>
       <h2>Enter Business Details Here</h2>
       <header className="App-header">
         <Form
@@ -21,10 +112,10 @@ function Introduction() {
           labelCol={{ span: 5 }}
           wrapperCol={{ span: 7 }}
           onFinish={(values) => {
-            console.log({ values });
+            // console.log({ values });
           }}
           onFinishFailed={(error) => {
-            console.log({ error });
+            // console.log({ error });
           }}
         >
           <Form.Item
@@ -40,7 +131,7 @@ function Introduction() {
             ]}
             hasFeedback
           >
-            <Input placeholder="Type your name" />
+            <Input placeholder="Type your name" onChange={displayName}/>
           </Form.Item>
 
           <Form.Item
@@ -52,8 +143,9 @@ function Introduction() {
                 message: "Please Select valid stage",
               },
             ]}
+            hasFeedback
           >
-            <Select placeholder="Select Business Stage">
+            <Select placeholder="Select Business Stage" onChange={displayBusinessStage}>
               <Select.Option value="Start-up">Start-up</Select.Option>
               <Select.Option value="Scale-up">Scale-up</Select.Option>
             </Select>
@@ -76,6 +168,7 @@ function Introduction() {
               placeholder="Age of establishment"
               min="0"
               max="100"
+              onChange={displayAgeOfEstablishment}
             ></InputNumber>
           </Form.Item>
 
@@ -91,7 +184,7 @@ function Introduction() {
             hasFeedback
             labelCol={{ span: 27 }}
           >
-            <Input placeholder="branded mobile phones, repair of laptop batteries, fresh kadak tea etc."></Input>
+            <Input placeholder="branded mobile phones, repair of laptop batteries, fresh kadak tea etc." onChange={displayPrimaryProducts}></Input>
           </Form.Item>
 
           <Form.Item
@@ -105,7 +198,7 @@ function Introduction() {
             ]}
             hasFeedback
           >
-            <Select placeholder="Offered to">
+            <Select placeholder="Offered to" onChange={displayOffered_to}>
               <Select.Option value="end_customers">End Customers</Select.Option>
               <Select.Option value="wholesaler">Wholesaler</Select.Option>
               <Select.Option value="distributor">Distributor</Select.Option>
@@ -127,7 +220,7 @@ function Introduction() {
             hasFeedback
             labelCol={{ span: 25 }}
           >
-            <Input placeholder="photocopy services, mobile recharge services, transportation of goods to customers, custom fitting of dresses, bridal makeup, agriculture equipments on rent, fish pickles, etc." />
+            <Input placeholder="photocopy services, mobile recharge services, transportation of goods to customers, custom fitting of dresses, bridal makeup, agriculture equipments on rent, fish pickles, etc." onChange={displaySecondary_product_service_offered} />
           </Form.Item>
 
           <Form.Item
@@ -144,7 +237,7 @@ function Introduction() {
             hasFeedback
             labelCol={{ span: 25 }}
           >
-            <Input placeholder="paneer, protein bars, juice, etc." />
+            <Input placeholder="paneer, protein bars, juice, etc." onChange={displayProcessed_products} />
           </Form.Item>
 
           <Form.Item
@@ -160,7 +253,7 @@ function Introduction() {
             labelCol={{ span: 27 }}
             wrapperCol={{ span: 3 }}
           >
-            <InputNumber placeholder="Year" min="0"></InputNumber>
+            <InputNumber placeholder="Year" min="0"  onChange={displayRelevant_experience}></InputNumber>
           </Form.Item>
 
           <Form.Item
@@ -175,7 +268,7 @@ function Introduction() {
             hasFeedback
           >
             <Select placeholder="Skill training">
-              <Select.Option value="no_formal_skill_training">
+              <Select.Option value="no_formal_skill_training" onChange={displaySkill_training}>
                 {" "}
                 No formal skill training
               </Select.Option>
@@ -227,8 +320,9 @@ function Introduction() {
                 message: "Please Select type",
               },
             ]}
+            hasFeedback
           >
-            <Select placeholder="Establishment type">
+            <Select placeholder="Establishment type" onChange={displayEstablishment_type}>
               <Select.Option value="factory">Factory</Select.Option>
               <Select.Option value="mill">Mill</Select.Option>
               <Select.Option value="stall">Stall</Select.Option>
@@ -262,7 +356,7 @@ function Introduction() {
             ]}
             hasFeedback
           >
-            <Input placeholder=" E.g. Sadar Bazar Colony, Laxmi market, etc." />
+            <Input placeholder=" E.g. Sadar Bazar Colony, Laxmi market, etc." onChange={displayBusiness_area} />
           </Form.Item>
 
           <Form.Item
@@ -276,7 +370,7 @@ function Introduction() {
             ]}
             hasFeedback
           >
-            <Select placeholder="Locality of business">
+            <Select placeholder="Locality of business" onChange={displayBusiness_locality}>
               <Select.Option value="urban">Urban</Select.Option>
               <Select.Option value="rural">Rural</Select.Option>
               <Select.Option value="semi-urban">Semi-urban</Select.Option>
@@ -287,8 +381,15 @@ function Introduction() {
           <Form.Item
             name="ownership_of_infrastructure"
             label="Ownership of infrastructure"
+            rules={[
+              {
+                required: true,
+                message: "Please Select",
+              },
+            ]}
+            hasFeedback
           >
-            <Select placeholder="Ownership of infrastructure">
+            <Select placeholder="Ownership of infrastructure" onChange={displayInfra_ownership}>
               <Select.Option value="rented">Rented</Select.Option>
               <Select.Option value="leased">Leased</Select.Option>
               <Select.Option value="self-owned">Self-owned</Select.Option>
@@ -311,6 +412,7 @@ function Introduction() {
             <InputNumber
               placeholder="Area of establishment"
               min="0"
+              onChange={displayEstablishment_area}
             ></InputNumber>
           </Form.Item>
 
@@ -338,8 +440,16 @@ function Introduction() {
             <Checkbox>Other such factors</Checkbox>
           </Form.Item>
 
-          <Form.Item name="market_research" label="Market research">
-            <Select placeholder="Market research">
+          <Form.Item name="market_research" label="Market research"
+          rules={[
+              {
+                required: true,
+                message: "Please Select",
+              },
+            ]}
+            hasFeedback
+            >
+            <Select placeholder="Market research" onChange={displayMarket_research}>
               <Select.Option value="not_conducted">Not conducted</Select.Option>
               <Select.Option value="market_research_has_been_conducted">
                 Market research has been conducted
@@ -347,8 +457,15 @@ function Introduction() {
             </Select>
           </Form.Item>
 
-          <Form.Item name="Primary market" label="Primary market">
-            <Select placeholder="Primary market">
+          <Form.Item name="Primary market" label="Primary market"
+          rules={[
+            {
+              required: true,
+              message: "Please Select",
+            },
+          ]}
+          hasFeedback>
+            <Select placeholder="Primary market"onChange={displayPrimary_market}>
               <Select.Option value="local">Local</Select.Option>
               <Select.Option value="regional">Regional</Select.Option>
               <Select.Option value="national">National</Select.Option>
@@ -370,7 +487,7 @@ function Introduction() {
             hasFeedback
             labelCol={{ span: 25 }}
           >
-            <Input placeholder="e.g. School-going students, collge-going students, housewives, truck-drivers, etc." />
+            <Input placeholder="e.g. School-going students, collge-going students, housewives, truck-drivers, etc."   onChange={displayCustomers}/>
           </Form.Item>
 
           <Form.Item
@@ -383,7 +500,7 @@ function Introduction() {
               },
             ]}
           >
-            <Select placeholder="Seasons of high sales">
+            <Select placeholder="Seasons of high sales" onChange={displaySeasonality}>
               <Select.Option value="consistent_sales_across_all_season">
                 Consistent sales across all season
               </Select.Option>
@@ -408,8 +525,9 @@ function Introduction() {
                 message: "Please Select Competition",
               },
             ]}
+            hasFeedback
           >
-            <Select placeholder="Competition">
+            <Select placeholder="Competition" onChange={displayCompetition}>
               <Select.Option value="no_similar_goods/service_provider_in_this_locality">
                 No similar goods/service provider in this locality
               </Select.Option>
@@ -436,7 +554,7 @@ function Introduction() {
             hasFeedback
             labelCol={{ span: 25 }}
           >
-            <Input placeholder="E.g. identfiied distributor in the district, Kolkata flea market, etc." />
+            <Input placeholder="E.g. identfiied distributor in the district, Kolkata flea market, etc." onChange={displaySuppliers}/>
           </Form.Item>
 
           <Form.Item
@@ -449,6 +567,7 @@ function Introduction() {
               },
             ]}
             wrapperCol={{ span: 10 }}
+            hasFeedback
           >
             <Checkbox>
               Distribution of marketing material(pamphlets/flyers)
@@ -475,6 +594,7 @@ function Introduction() {
               },
             ]}
             wrapperCol={{ span: 10 }}
+            hasFeedback
           >
             <Checkbox>
               Increasing the variety of product/service offering
@@ -491,12 +611,17 @@ function Introduction() {
           </Form.Item>
 
           <Form.Item wrapperCol={{ span: 13 }}>
-            <Button block type="danger" htmlType="submit">
+            <Button block type="danger" htmlType="submit" onSubmit = { e =>this.displaySentence(e)}>
               Submit
             </Button>
           </Form.Item>
         </Form>
       </header>
+      </div>
+
+      <div>
+      {/* <p>"FirstName: " {this.state.name}</p> */}
+      </div>
     </div>
   );
 }
